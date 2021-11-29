@@ -1,0 +1,14 @@
+services:
+  db-dev:
+    image: mysql:latest
+    container_name: mysql-db-dev
+    volumes:
+      - "./.mysql-data/db:/var/lib/mysql"
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: shop
+      MYSQL_ROOT_PASSWORD: rootpw #password should not be committed
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password #password should not be committed
