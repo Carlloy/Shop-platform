@@ -10,16 +10,17 @@ import com.kazdon.shopplatform.app.catalog.domain.UpdateItemCommand;
 import java.util.Set;
 import java.util.UUID;
 
-record UpdateItemDTO(String name, Double price, String currencyCode, String description,
+record UpdateItemDTO(String name, PriceDTO price, String description,
                      String mainImage, Set<String> otherImages) {
 
     UpdateItemCommand toCommand(UUID id) {
         return new UpdateItemCommand(
                 id,
                 new ItemName(name),
-                new Price(price, Currency.valueOf(currencyCode)),
+                new Price(price.value(), Currency.valueOf(price.currencyCode())),
                 new Description(description),
                 new ImagesGallery(mainImage, otherImages)
         );
     }
+
 }

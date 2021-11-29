@@ -9,13 +9,13 @@ import com.kazdon.shopplatform.app.catalog.domain.Price;
 
 import java.util.Set;
 
-record AddItemDTO(String name, Double price, String currencyCode, String description, String mainImage,
+record AddItemDTO(String name, PriceDTO price, String description, String mainImage,
                   Set<String> otherImages) {
 
     AddItemCommand toCommand() {
         return new AddItemCommand(
                 new ItemName(name),
-                new Price(price, Currency.valueOf(currencyCode)),
+                new Price(price.value(), Currency.valueOf(price.currencyCode())),
                 new Description(description),
                 new ImagesGallery(mainImage, otherImages)
         );
