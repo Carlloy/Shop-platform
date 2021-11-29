@@ -5,6 +5,7 @@ import com.kazdon.shopplatform.app.catalog.domain.UpdateItemCommand;
 import com.kazdon.shopplatform.app.catalog.infra.ItemFacade;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -31,7 +32,7 @@ class ItemController {
         return ResponseEntity.status(HttpStatus.CREATED).body(id);
     }
 
-    @PostMapping(path = "{id}")
+    @DeleteMapping(path = "{id}")
     ResponseEntity<Void> deleteItem(@PathVariable UUID id) {
         itemFacade.deleteItemFromCatalog(id);
         return ResponseEntity.noContent().build();
