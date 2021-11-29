@@ -1,6 +1,6 @@
 CREATE TABLE image
 (
-    id      INT PRIMARY KEY,
+    id      INT PRIMARY KEY AUTO_INCREMENT,
     item_id BINARY(16)   NOT NULL,
     url     VARCHAR(150) NOT NULL,
     main    BOOL         NOT NULL DEFAULT 0,
@@ -9,4 +9,4 @@ CREATE TABLE image
         REFERENCES item (ID)
         ON DELETE CASCADE
         ON UPDATE CASCADE
-)
+);
