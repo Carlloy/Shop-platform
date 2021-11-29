@@ -32,15 +32,15 @@ class ItemController {
     }
 
     @PostMapping(path = "{id}")
-    ResponseEntity<UUID> deleteItem(@PathVariable UUID id) {
+    ResponseEntity<Void> deleteItem(@PathVariable UUID id) {
         itemFacade.deleteItemFromCatalog(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping(path = "{id}")
-    ResponseEntity<UUID> updateItem(@PathVariable UUID id, @RequestBody UpdateItemDTO updateItemDTO) {
+    ResponseEntity<Void> updateItem(@PathVariable UUID id, @RequestBody UpdateItemDTO updateItemDTO) {
         UpdateItemCommand command = updateItemDTO.toCommand(id);
         itemFacade.updateItem(command);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }
